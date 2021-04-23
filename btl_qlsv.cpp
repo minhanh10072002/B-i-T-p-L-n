@@ -28,10 +28,20 @@ void xuatFile(SV a[], int n, char fileName[]);
 int Menu();
 
 int main(){
-	system("color 30");
 	Menu();
 }
- 
+
+void SetColor(WORD color){ 
+    HANDLE hConsoleOutput;
+    hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO screen_buffer_info;
+    GetConsoleScreenBufferInfo(hConsoleOutput, &screen_buffer_info);
+    WORD wAttributes = screen_buffer_info.wAttributes;
+    color &= 0x000f;
+    wAttributes &= 0xfff0; wAttributes |= color;
+    SetConsoleTextAttribute(hConsoleOutput, wAttributes);
+}
+
 void tinhDTB(SV &sv){
     sv.dtb = (sv.dH + sv.dL + sv.dT)/3;    
 }
@@ -127,23 +137,26 @@ int Menu(){
     char fileName[] = "DSSV.txt";
     int n;
     bool daNhap = false;
+    SetColor(10);
     do{
         printf("\nNhap so luong SV: "); scanf("%d", &n);
     }while(n <= 0);
     SV a[n];
     while(true){
+    	SetColor(10);
         system("cls");
-        printf("                ****************************************\n");
-        printf("                *    CHUONG TRINH QUAN LY SINH VIEN    *\n");
-        printf("                *      1. Nhap du lieu                 *\n");
-        printf("                *      2. In danh sach sinh vien       *\n");
-        printf("                *      3. Sap xep sinh vien theo DTB   *\n");
-        printf("                *      4. Xep loai sinh vien           *\n");
-        printf("                *      5. Xuat DS sinh vien ra file    *\n");
-        printf("               	*      6. Tim kiem sinh vien           *\n");
-        printf("                *      0. Thoat                        *\n");
-        printf("                ****************************************\n");
-        printf("                **       Nhap lua chon cua ban        **\n");
+        printf(" \n\n\n\n\n\n");
+        printf("                                ****************************************\n");
+        printf("                                *    CHUONG TRINH QUAN LY SINH VIEN    *\n");
+        printf("                                *      1. Nhap du lieu                 *\n");
+        printf("                                *      2. In danh sach sinh vien       *\n");
+        printf("                                *      3. Sap xep sinh vien theo DTB   *\n");
+        printf("                                *      4. Xep loai sinh vien           *\n");
+        printf("                                *      5. Xuat DS sinh vien ra file    *\n");
+        printf("                             	*      6. Tim kiem sinh vien           *\n");
+        printf("                                *      0. Thoat                        *\n");
+        printf("                                ****************************************\n");
+        printf("                                **       Nhap lua chon cua ban        **\n");
         scanf("%d",&key);
         switch(key){
             case 1:
@@ -192,7 +205,7 @@ int Menu(){
                 }else{
                     printf("\nNhap DS SV truoc!!!!");
                 }
-                printf("\nXuat DSSV thanh cong vao file %s!", fileName);
+                printf("\nGhi DSSV thanh cong vao file %s!", fileName);
                 printf("\nBam phim bat ky de tiep tuc!");
                 getch();
                 break;
