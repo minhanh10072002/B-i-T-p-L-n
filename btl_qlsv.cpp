@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <conio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <windows.h>
+#include <stdio.h>//mot tep co cac lenh cho bo tien xu ly
+#include <conio.h>//thuc hien cac thao tac input output tu man hinh
+#include <stdlib.h>//
+#include <string.h>//lam viec voi chuoi
+#include <windows.h>// chinh mau chu
 
  
 struct SinhVien{
@@ -28,18 +28,8 @@ void xuatFile(SV a[], int n, char fileName[]);
 int Menu();
 
 int main(){
+	system("color 0A");
 	Menu();
-}
-
-void SetColor(WORD color){ 
-    HANDLE hConsoleOutput;
-    hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_SCREEN_BUFFER_INFO screen_buffer_info;
-    GetConsoleScreenBufferInfo(hConsoleOutput, &screen_buffer_info);
-    WORD wAttributes = screen_buffer_info.wAttributes;
-    color &= 0x000f;
-    wAttributes &= 0xfff0; wAttributes |= color;
-    SetConsoleTextAttribute(hConsoleOutput, wAttributes);
 }
 
 void tinhDTB(SV &sv){
@@ -137,13 +127,11 @@ int Menu(){
     char fileName[] = "DSSV.txt";
     int n;
     bool daNhap = false;
-    SetColor(10);
     do{
         printf("\nNhap so luong SV: "); scanf("%d", &n);
     }while(n <= 0);
     SV a[n];
     while(true){
-    	SetColor(10);
         system("cls");
         printf(" \n\n\n\n\n\n");
         printf("                                ****************************************\n");
