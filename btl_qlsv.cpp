@@ -1,16 +1,15 @@
-#include <stdio.h>//mot tep co cac lenh cho bo tien xu ly
-#include <conio.h>//thuc hien cac thao tac input output tu man hinh
-#include <stdlib.h>//
-#include <string.h>//lam viec voi chuoi
-#include <windows.h>// chinh mau chu
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <windows.h>
 
- 
 struct SinhVien{
     char ten[30];
     char gt[5];
     int age;
     float dT, dL, dH;
-    float dtb = 0;
+    float dtb;
 };
  
 typedef SinhVien SV;
@@ -94,7 +93,7 @@ void xeploai(SV sv){
 void xeploaiN(SV a[], int n){
     printf("\n____________________________________\n");
     for(int i = 0;i < n;++i){
-        printf("Xep loai cua SV thu %d la: ", i+1);
+        printf("\nXep loai cua SV thu %d la: ", i+1);
         xeploai(a[i]);
     }
     printf("\n____________________________________\n");
@@ -102,13 +101,17 @@ void xeploaiN(SV a[], int n){
 void timkiem(SV a[], int n){
 	printf("\n____________________________________\n");
 	char timten[30];
+	int dem = 0;
 	printf("Nhap ten sinh vien can tim: "); fflush(stdin); gets(timten);
 	for(int i=0; i<n; ++i){
 		if(strcmp(timten, a[i].ten)==0){
 			printf("\nKet qua tim kiem sinh vien %s:", timten);
 			xuat(a[i]);
+			dem++;
         }
-    }    
+    }
+	if(dem==0)
+		printf("\nKhong co sinh vien nay trong danh sach!");    
 	printf("\n____________________________________\n");
 }
 
