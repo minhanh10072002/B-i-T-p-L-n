@@ -139,8 +139,8 @@ int Menu(){
         printf(" \n\n\n\n\n\n");
         printf("                                ****************************************\n");
         printf("                                *    CHUONG TRINH QUAN LY SINH VIEN    *\n");
-        printf("                                *      1. Nhap du lieu                 *\n");
-        printf("                                *      2. In danh sach sinh vien       *\n");
+        printf("                                *      1. Nhap danh sach sinh vien     *\n");
+        printf("                                *      2. Xuat danh sach sinh vien     *\n");
         printf("                                *      3. Sap xep sinh vien theo DTB   *\n");
         printf("                                *      4. Xep loai sinh vien           *\n");
         printf("                                *      5. Xuat DS sinh vien ra file    *\n");
